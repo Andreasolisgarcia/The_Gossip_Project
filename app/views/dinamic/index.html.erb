@@ -29,24 +29,31 @@
 
 </head>
 <body>
-
-    <h1>Mon super site de gossip !</h1>
+<section class="jumbotron text-center">
+<div class="container">
+  <h1> Hear what's happening !</h1>
+  <p> ...we are not the ones telling
+  </p>
+</div>
+</section>
+    <h1></h1>
     
     <% gossips = Gossip.all %>
-    <% gossips.each_with_index do |gossip,index| %>
-    <p>
-    
-    <%= gossip.id %>
-    <%= gossip.title %> <br/>
+    <div class="row">
+      <% gossips.each_with_index do |gossip,index| %>
+        <div class="col-sm-4">
+          <div class="card" style="width: 18rem; margin-bottom: 20px;">
+            <div class="card-body">
+              <h5 class="card-title"><%= gossip.id %> <%= gossip.title %></h5>
+               
+              <a href="/gossip/<%= gossip.id %>" class="btn btn-light">Voir plus</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-    <button type="button" class="btn btn-light">
-    <a href="/gossip/<%= gossip.id %>" style="text-decoration: none;">Voir plus</a></button>
-     <br>
     
-    
-    </p>
-    <% end %>
-
     
 </body>
 </html>
