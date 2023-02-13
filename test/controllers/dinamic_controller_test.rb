@@ -1,6 +1,6 @@
 require "test_helper"
 
-class TeamControllerTest < ActionDispatch::IntegrationTest
+class DinamicControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
