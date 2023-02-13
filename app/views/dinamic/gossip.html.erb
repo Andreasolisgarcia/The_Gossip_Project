@@ -32,5 +32,8 @@
        <%= @gossip.user.last_name%></p>
     <p><%= @gossip.title%></p>
     <p><%= @gossip.context%></p>
+
+    <button type="button" class="btn btn-light">
+    <a href="/gossip/user/<%= @gossip.user.id %>" style="text-decoration: none;">Author</a></button>
 </body>
 </html>

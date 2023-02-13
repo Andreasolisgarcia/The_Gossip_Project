@@ -13,4 +13,10 @@ class DinamicController < ApplicationController
    @name = params["name"]
    puts @name
 end
+
+def user
+   @id = params["id"].to_i
+   @user = User.find(@id)
+end
+
 end

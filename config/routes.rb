@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   get '/gossips', to: 'dinamic#index'
   get '/gossip/:id', to: 'dinamic#gossip'
+  get '/gossip/user/:id', to: 'dinamic#user'
   get '/welcome/:name', to: 'dinamic#welcome'
   
 
