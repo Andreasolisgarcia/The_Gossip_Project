@@ -21,11 +21,12 @@
 </section>
     <h1></h1>
     <div class="row">
-      <% @gossips.each do |gossip| %>
+      <% @gossips.each_with_index do |gossip,index| %>
         <div class="col-sm-4">
           <div class="card" style="width: 18rem; margin-bottom: 20px;">
             <div class="card-body">
               <h5 class="card-title"><%= gossip.id %> <%= gossip.title %></h5>
+               
               <%= link_to "See more", gossip_path(gossip), class:"btn btn-light"%>
             </div>
           </div>
@@ -34,3 +35,5 @@
     </div>
 </body>
 </html>
+
+
