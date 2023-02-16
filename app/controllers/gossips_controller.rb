@@ -32,7 +32,7 @@ class GossipsController < ApplicationController
         flash[:success] = " Your Gossip is here now !"
         redirect_to  gossips_path   
      end
-    end
+  end
       
   def destroy
     @gossip = Gossip.find(params[:id])
