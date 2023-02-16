@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :cities
+  resources :sessions, only: [:new, :create, :destroy]
   
   get '/welcome/:name', to: 'dinamic#welcome'
   get '/welcome', to: 'static#welcome'
