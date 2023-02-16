@@ -8,31 +8,55 @@
 
     
 </head>
+<style>
+.btn-danger {
+  background-color: pink;
+  border: none;
+}
+</style>
 <body>
-
+<section class="jumbotron text-center">
 <div class="container">
-  <h2 class="text-center mt-5 mb-5">Gossip :</h2>
+  <h1> <%= @gossip.title%> </h1>
+  <p> <%= @gossip.context%></p>
+  <dt>Author:</dt>
+  <dd><p><%= @gossip.user.first_name%></p></dd>
+  <dt>From:</dt>
+  <dd><p><%= @gossip.user.city.name%></p></dd>
+  <p>
+  <a class="btn btn-primary my-2" <%= link_to "Author", user_path(@gossip.user), style: "text-decoration: none;" %></a>
+  <a class="btn btn-primary my-2" <%= link_to "Edit", edit_gossip_path(@gossip.id), style: "text-decoration: none;" %></a>
+  <%= button_to gossip_path(@gossip.id), method: :delete, class: "btn btn-danger",onclick: "return confirm('Are you sure ?');", style: "text-decoration: none;" do %>
+    BYE Gossip
+  <% end %>
+  </p>
+</div>
+</section>
+<div class="col-md-8 mx-auto">
+<%= form_tag gossip_comments_path(@gossip), method: :post, style: "max-width: 600px;" do %>
+  <%= label_tag :content, "Drop it, is anonimous" %>
+  <%= text_area_tag :content, nil, rows: 1, class: "form-control mb-3" %>
+  <%= submit_tag "Comment", class: "btn btn-primary text-center m-3 mr-2 border" %>
+<% end %>
+</div>
+
+
   <div class="row">
-    <div class="col-md-4 offset-md-4">
-      <dl class="dl-horizontal">
-        <dt>Title :</dt>
-        <dd><p><%= @gossip.title%></p></dd>
-        <dt>Content:</dt>
-        <dd><p><%= @gossip.context%></p></dd>
-        <dt>Author:</dt>
-        <dd><p><%= @gossip.user.first_name%></p></dd>
-        <dt>From:</dt>
-        <dd><p><%= @gossip.user.city.name%></p></dd>
-        <button type="button" class="btn btn-light">
-        <%= link_to "Author", user_path(@gossip.user), style: "text-decoration: none;" %>
-        <button type="button" class="btn btn-light">
-        <%= link_to "Edit", edit_gossip_path(@gossip.id), style: "text-decoration: none;" %>
-        <%= button_to gossip_path(@gossip.id), method: :delete, class: "btn btn-danger",onclick: "return confirm('Are you sure ?');", style: "text-decoration: none;" do %>
-          BYE Gossip
-        <% end %>
-      </dl>
-    </div>
+    <% @gossip.comments.each_with_index do |comment,index| %>
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem; margin-bottom: 20px;">
+          <div class="card-body">
+            <h5 class="card-title"><%= index + 1 %> <%= comment.content %></h5>
+            <%= link_to 'Edit Comment', edit_gossip_comment_path(@gossip, comment), class: 'btn btn-warning' %>
+            <%= button_to gossip_comment_path(@gossip, comment), method: :delete, class: "btn btn-danger", onclick: "return confirm('Are you sure?');" do %>
+              BYE Comment
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-</div>  
+</div>
+
 </body>
 </html>

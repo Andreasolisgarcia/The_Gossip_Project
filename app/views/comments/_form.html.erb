@@ -1,0 +1,7 @@
+<%= form_with(model: [gossip, gossip.comments.build]) do |f| %>
+    <div class="form-control">
+      <%= f.text_field :content %>
+      <%= f.submit "Reply", class: "btn btn-primary mt-1" %>
+    </div>
+  <% end %>
+  
