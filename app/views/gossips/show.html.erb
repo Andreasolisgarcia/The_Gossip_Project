@@ -19,10 +19,17 @@
         <dd><p><%= @gossip.title%></p></dd>
         <dt>Content:</dt>
         <dd><p><%= @gossip.context%></p></dd>
+        <dt>Author:</dt>
+        <dd><p><%= @gossip.user.first_name%></p></dd>
+        <dt>From:</dt>
+        <dd><p><%= @gossip.user.city.name%></p></dd>
         <button type="button" class="btn btn-light">
         <%= link_to "Author", user_path(@gossip.user), style: "text-decoration: none;" %>
         <button type="button" class="btn btn-light">
         <%= link_to "Edit", edit_gossip_path(@gossip.id), style: "text-decoration: none;" %>
+        <%= button_to gossip_path(@gossip.id), method: :delete, class: "btn btn-danger",onclick: "return confirm('Are you sure ?');", style: "text-decoration: none;" do %>
+          BYE Gossip
+        <% end %>
       </dl>
     </div>
   </div>

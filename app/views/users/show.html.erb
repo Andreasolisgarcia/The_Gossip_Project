@@ -34,7 +34,8 @@
         <dd><%= @user.city.name %></dd>
         <button type="button" class="btn btn-light">
         <%= link_to "Gossip", gossip_path(@user), class: "btn btn-light" %>
-        
+        <button type="button" class="btn btn-light">
+        <%= link_to "City's Gossips", city_path(@user), class: "btn btn-light" %>
       </dl>
     </div>
   </div>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gossip Project</title>
+
+</head>
+<body>
+<section class="jumbotron text-center">
+<div class="container">
+  <h1> In <%= @city.name%></h1>
+  <p> ...this are the Gossips !
+  </p>
+  <p>
+  <a class="btn btn-primary my-2" <%= link_to "Add a Gossip", new_gossip_path%></a>
+  <a class="btn btn-primary my-2" <%= link_to "I'm not a member...yet", new_user_path%></a>
+  </p>
+</div>
+</section>
+    <h1></h1>
+    <div class="row">
+      <% @gossips_in_city.each_with_index do |gossip,index| %>
+        <div class="col-sm-4">
+          <div class="card" style="width: 18rem; margin-bottom: 20px;">
+            <div class="card-body">
+              <h5 class="card-title"><%= gossip.id %> <%= gossip.title %></h5>
+               
+              <%= link_to "See more", gossip_path(gossip), class:"btn btn-light"%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</body>
+</html>
+
+
