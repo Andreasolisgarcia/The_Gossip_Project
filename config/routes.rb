@@ -3,12 +3,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get '/gossips', to: 'dinamic#index'
-  get '/gossip/:id', to: 'dinamic#gossip'
-  get '/gossip/user/:id', to: 'dinamic#user'
-  get '/welcome/:name', to: 'dinamic#welcome'
   
-
+  resources :gossips
+  resources :users
+  resources :cities
+  
+  get '/welcome/:name', to: 'dinamic#welcome'
   get '/welcome', to: 'static#welcome'
   get '/team', to: 'static#team'
   get '/contact', to: 'static#contact'

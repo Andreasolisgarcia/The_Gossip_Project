@@ -1,10 +1,4 @@
 class DinamicController < ApplicationController
- def index
- end
- def gossip
-    @id = params["id"].to_i
-    @gossip = Gossip.find(@id)
- end
 
  def welcome
    puts "*"*30
@@ -12,11 +6,6 @@ class DinamicController < ApplicationController
    puts "Ceci est mon super params : #{params["name"]}"
    @name = params["name"]
    puts @name
-end
-
-def user
-   @id = params["id"].to_i
-   @user = User.find(@id)
 end
 
 end

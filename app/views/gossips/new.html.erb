@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<style>
+  .center {
+    display: flex;
+    justify-content: center;
+   <!--  align-items: center; -->
+    height: 100vh;
+  }
+  form {
+    width: 400px;
+  }
+</style>
+<div class="center">
+  <%= form_tag("/gossips", method: "post") do %>
+    <div class="form-group">
+      <%= label_tag :title, "Title" %>
+      <%= text_field_tag :title, nil, class: "form-control", required: true, minlength: 3, maxlength: 14 %>
+      <small id="titleHelp" class="form-text text-muted">Enter a title for your gossip between (3 and 14 characters)</small>
+    </div>
+    <div class="form-group">
+      <%= label_tag :context, "Gossip Content" %>
+      <%= text_area_tag :context, nil, class: "form-control", required: true, rows: 3 %>
+      <small id="contextHelp" class="form-text text-muted">Remember: everyone is gonna know ;).</small>
+    </div>
+    <div class="form-group form-check">
+      <%= check_box_tag :terms_and_conditions, "1", false, class: "form-check-input", required: true %>
+      <%= label_tag :terms_and_conditions, "OK, let's do this", class: "form-check-label" %>
+    </div>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= submit_tag "Send", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+</body>
+</html>
