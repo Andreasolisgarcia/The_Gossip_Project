@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-   @id = params["id"].to_i
-   @user = User.find(@id)
+   @user = User.find(params[:id])
   end
   def new
     @user= User.new
@@ -11,11 +10,6 @@ class UsersController < ApplicationController
   def create
     user_params["city_id"] = user_params["city_id"].to_i
     @user = User.new(user_params)
-    # @user.city = City.find(params[:city_id].to_i)
-    # if params[:user][:new_city_name].present?
-    #   city = City.create(name: params[:user][:new_city_name])
-    #   @user.city = city
-    # end
       if @user.save
         flash[:success] = "Welcome to TGP"
         redirect_to @user
@@ -23,6 +17,15 @@ class UsersController < ApplicationController
         puts @user.errors.full_messages
         render :new
       end
+  end
+
+  def profile
+    if session[:user_id]
+      puts "session[:user_id]: #{session[:user_id]}" # Add this line
+      @user = User.find(session[:user_id])
+    else
+      redirect_to new_session_path
+    end
   end
 
   private
