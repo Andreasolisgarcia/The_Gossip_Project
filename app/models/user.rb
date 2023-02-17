@@ -3,5 +3,5 @@ class User < ApplicationRecord
     has_many :gossips
     has_secure_password
     before_save { self.email = email.downcase }
-    validates :name, presence: true
+    validates :first_name, presence: true
 end

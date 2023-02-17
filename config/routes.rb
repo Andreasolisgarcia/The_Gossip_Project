@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :sessions, only: [:new, :create, :destroy]
+  resources :cities
   resources :users
   resources :gossips do 
     resources :comments
   end
-  resources :cities
+  
   
   
   get '/welcome/:name', to: 'dinamic#welcome'

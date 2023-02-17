@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
       if @user.save
         flash[:success] = "Welcome to TGP"
-        redirect_to @user
+        redirect_to profile_path
       else
         puts @user.errors.full_messages
         render :new
