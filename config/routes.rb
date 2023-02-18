@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/team', to: 'static#team'
   get '/contact', to: 'static#contact'
   get '/profile', to: 'users#profile'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
   
 
 end
